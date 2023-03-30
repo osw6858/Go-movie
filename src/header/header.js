@@ -8,7 +8,11 @@ function Header() {
         <span className="logo">go-movie</span>
       </div>
       <div className="middle-section">
-        <input className="search-bar" type="text" placeholder="search"></input>
+        <input
+          className="search-bar"
+          type="text"
+          placeholder="Search movies"
+        ></input>
         <button className="search-button">
           <img className="search-icon" src="assets/icons/search.svg"></img>
           <div className="tooltip">Search</div>
@@ -24,7 +28,7 @@ function Header() {
       <div className="right-section">
         <div className="upload-icon-container">
           <img className="upload-icon" src="assets/icons/upload.svg" />
-          <div className="tooltip">Create</div>
+          <div className="tooltip">join</div>
         </div>
         <img
           className="youtube-apps-icon"

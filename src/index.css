@@ -5,9 +5,9 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding-top: 80px;
-  padding-left: 50px;
-  padding-right: 50px;
+  padding-top: 100px;
+  padding-left: 150px;
+  padding-right: 150px;
   background-color: #181818;
   color: white;
 }
