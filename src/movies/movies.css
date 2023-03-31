@@ -44,6 +44,7 @@
   padding: 4px;
   border-radius: 2px;
   background-color: black;
+  color: white;
 }
 
 .video-info-grid {
@@ -52,14 +53,21 @@
   align-items: center;
 }
 
-.video-title,
-.video-author {
+.video-title {
   font-size: 14px;
-  font-weight: 500;
+  font-weight: 700;
   line-height: 20px;
 }
-.video-author,
+.video-kind,
 .video-stats {
   font-size: 12px;
-  color: #aaaaaa;
+  color: #3a3434;
+}
+
+.pagination {
+  margin-top: 50px;
+  margin-bottom: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

@@ -1,10 +1,17 @@
 import "./header.css";
+import {
+  BarsOutlined,
+  SearchOutlined,
+  LineChartOutlined,
+} from "@ant-design/icons";
 
 function Header() {
   return (
     <header className="header">
       <div className="left-section">
-        <img className="hamburger-menu" src="assets/icons/hamburger-menu.svg" />
+        <div className="hamburger-menu">
+          <BarsOutlined />
+        </div>
         <span className="logo">go-movie</span>
       </div>
       <div className="middle-section">
@@ -12,23 +19,17 @@ function Header() {
           className="search-bar"
           type="text"
           placeholder="Search movies"
+          name="search"
         ></input>
         <button className="search-button">
-          <img className="search-icon" src="assets/icons/search.svg"></img>
+          <SearchOutlined />
           <div className="tooltip">Search</div>
-        </button>
-        <button className="voice-search-button">
-          <img
-            className="voice-search-icon"
-            src="assets/icons/voice-search-icon.svg"
-          ></img>
-          <div className="tooltip">Search with your voice</div>
         </button>
       </div>
       <div className="right-section">
-        <div className="upload-icon-container">
-          <img className="upload-icon" src="assets/icons/upload.svg" />
-          <div className="tooltip">join</div>
+        <div className="select-container">
+          <LineChartOutlined style={{ fontSize: "20px" }} />
+          <div className="tooltip">박스오피스 순위</div>
         </div>
         <img
           className="youtube-apps-icon"
@@ -42,7 +43,7 @@ function Header() {
           <div className="notifications-count">1</div>
         </div>
         <img
-          class="current-user-picture"
+          className="current-user-picture"
           src="assets/images/avatars/avatar-1.png"
         ></img>
       </div>
