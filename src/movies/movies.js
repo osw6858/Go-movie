@@ -1,16 +1,18 @@
 import "./movies.css";
-import { Empty } from "antd";
+
 import React from "react";
 import axios from "axios";
 import Pagination from "../pagenation/pagenation";
 
-function Movies() {
+function Movies(searchString) {
   const [movies, setMovies] = React.useState([]);
   const limit = 8; //한 화면에서 보여질 카드 갯수
   const [page, setPage] = React.useState(1);
   const offset = (page - 1) * limit; //해당 페이지의 첫 게시물의 위치(index)
-  let query = `&movieNm=미아`;
-  const url = `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=7e9a703145ec25f8dc300521b3384744&curPage=1${query}`;
+
+  console.log("검색어", searchString); //검색어 받아오는거 까진 성공
+
+  const url = `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=7e9a703145ec25f8dc300521b3384744&curPage=1`;
 
   React.useEffect(function () {
     axios
@@ -70,3 +72,5 @@ export default Movies;
 //전체영화 목록에서 페이징 처리 --> 완료했지만 알고리즘 공부 필요!
 
 //movieNm 영화명 조회이용 --> 검색기능 구현
+
+//useState useEffect 공부 더욱더 깊이있게 해볼것!
