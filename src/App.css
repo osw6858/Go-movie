@@ -67,7 +67,7 @@
 }
 
 .search-bar {
-  height: 36px;
+  height: 36.5px;
   padding-left: 10px;
   font-size: 16px;
 
@@ -81,8 +81,6 @@
   font-size: 16px;
 }
 
-.search-button,
-.voice-search-button,
 .select-container {
   display: flex;
   justify-content: center;
@@ -91,7 +89,6 @@
 }
 
 .search-button .tooltip,
-.voice-search-button .tooltip,
 .select-container .tooltip {
   position: absolute;
   background-color: gray;
