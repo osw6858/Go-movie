@@ -1,5 +1,5 @@
 import "./movies.css";
-import { Card, Result } from "antd";
+import { Card, Result, Space, Spin } from "antd";
 import React from "react";
 import axios from "axios";
 import Pagination from "../pagenation/pagenation";
@@ -16,7 +16,7 @@ function Movies(prop) {
       axios
         .get(url)
         .then(function (result) {
-          console.log("결과입니다", result);
+          console.log("영화목록결과", result);
           const movies = result.data.movieListResult.movieList;
           setMovies(movies);
         })
@@ -29,7 +29,7 @@ function Movies(prop) {
 
   if (movies.length === 0) {
     return (
-      <div>
+      <div className="loading">
         <Result title="결과가 없습니다."></Result>
       </div>
     );
@@ -77,3 +77,5 @@ export default Movies;
 //prop은 object형식으로 컴포넌트에 전달됨
 
 //상세페이지 만들기 / css 더 공부할것
+
+//결과없음을 계속 보여주지 말고 로딩화면이였다가 특정시간이 지나면 결과없음으로 버꿀것

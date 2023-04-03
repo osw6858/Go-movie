@@ -1,15 +1,14 @@
 import "./App.css";
 import React from "react";
 import Movies from "./movies/movies";
+import Boxoffice from "./boxoffice/boxoffice";
+import { Router, Routes, Route, useNavigate, Navigate } from "react-router-dom";
 
-import {
-  BarsOutlined,
-  SearchOutlined,
-  LineChartOutlined,
-} from "@ant-design/icons";
-//import Pagination from "react-js-pagination";
+import { BarsOutlined, SearchOutlined } from "@ant-design/icons";
+import { Button } from "antd";
 
 function App() {
+  const navigate = useNavigate(); //v6부터는 useHistory 말고 useNavigate을 사용
   const [searchValue, setSearchValue] = React.useState("");
   const searching = (event) => {
     //이부분 다시 공부(useState에 대해 더 깊이 공부해 볼것)
@@ -39,14 +38,52 @@ function App() {
         </div>
         <div className="right-section">
           <div className="select-container">
-            <LineChartOutlined style={{ fontSize: "20px" }} />
-            <div className="tooltip">박스오피스 순위</div>
+            <Button
+              size="small"
+              onClick={() => {
+                navigate("/boxoffice");
+              }}
+            >
+              박스오피스 순위
+            </Button>{" "}
+            &nbsp;
+            <Button
+              size="small"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              전체보기
+            </Button>
           </div>
         </div>
       </header>
-      <Movies searchString={searchValue} />
+      <div className="body">
+        <Routes>
+          <Route path="/" element={<Movies searchString={searchValue} />} />
+          <Route
+            path="/boxoffice"
+            element={<Boxoffice searchString={searchValue}></Boxoffice>}
+          />
+        </Routes>
+      </div>
+      <footer className="footer">
+        <p>ver 1.0 / MadeBy osw6858</p>
+      </footer>
     </div>
   );
 }
 
 export default App;
+
+//react-router-dom v6부터는, Switch 대신 Routes를 사용
+//Route 안에 component 대신 element 사용
+//그리고 <Routes> 자식으로는 <Route>만 가능
+
+//박스오피스 페이지 구현할것 historyPupsh 활용
+
+//v6부터는 useHistory 말고 useNavigate을 사용
+
+//영화 상세페이지 rout로 구현하기
+
+//로그인 api도입 예정 -> 적용하면 로그인시만 상세페이지 조회 가능
