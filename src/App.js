@@ -2,9 +2,9 @@ import "./App.css";
 import React from "react";
 import Movies from "./movies/movies";
 import Boxoffice from "./boxoffice/boxoffice";
-import { Router, Routes, Route, useNavigate, Navigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 
-import { BarsOutlined, SearchOutlined } from "@ant-design/icons";
+import { BarsOutlined, SearchOutlined, LoginOutlined } from "@ant-design/icons";
 import { Button } from "antd";
 
 function App() {
@@ -20,9 +20,24 @@ function App() {
       <header className="header">
         <div className="left-section">
           <div className="hamburger-menu">
-            <BarsOutlined />
+            <BarsOutlined
+              onClick={() => {
+                //로그인 페이지 열기 기능 구현
+                navigate("/");
+              }}
+            />
+            <div class="tooltip">페이지 정보</div>
           </div>
-          <span className="logo">go-movie</span>
+          <div>
+            <button
+              className="logo"
+              onClick={() => {
+                navigate("/");
+              }}
+            >
+              <span>go-movie</span>
+            </button>
+          </div>
         </div>
         <div className="middle-section">
           <input
@@ -45,16 +60,17 @@ function App() {
               }}
             >
               박스오피스 순위
-            </Button>{" "}
-            &nbsp;
-            <Button
-              size="small"
-              onClick={() => {
-                navigate("/");
-              }}
-            >
-              전체보기
             </Button>
+
+            <div className="login">
+              <LoginOutlined
+                className="login-button"
+                onClick={() => {
+                  navigate("/"); //카카오 로그인 기능 구현 예정
+                }}
+              />
+              <div className="tooltip">로그인</div>
+            </div>
           </div>
         </div>
       </header>

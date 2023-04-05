@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import "./boxoffice.css";
 import { Card } from "antd";
+import dayjs from "dayjs";
 
 function Boxoffice() {
   const [boxoffice, setBoxoffice] = React.useState([]);
@@ -17,7 +18,7 @@ function Boxoffice() {
     month = month >= 10 ? month : "0" + month; //month 두자리로 저장
     let day = date.getDate() - 1; //d -> 오늘 하루 전
     day = day >= 10 ? day : "0" + day; //day 두자리로 저장
-    return year + month + day; //'-' 추가하여 yyyy-mm-dd 형태 생성 가능
+    return year + month + day;
   }
 
   date = getFormatDate(date);
@@ -41,7 +42,7 @@ function Boxoffice() {
   return (
     <div>
       <section className="rank-section">
-        <h2>1위 ~ 10위 / 기준일 - {date}</h2>
+        <h2>1위 ~ 10위 / 기준일 - {dayjs(date).format("YYYY년 MM월 DD일")}</h2>
         {boxoffice.slice(offset, offset + limit).map((boxoffice, index) => {
           return (
             <div key={index}>
@@ -65,7 +66,5 @@ export default Boxoffice;
 //movies컴포넌트와 비슷한데 굳이 이걸 따로 만들어야 할까?
 
 //movies 컴포넌트에서 api url만 바꿔서 한 컴포넌트에서 순위만 볼 수 있게 할 수 있을듯 => 개같이실패
-
-//이렇게 된거 다른 형식으로 디자인 해보자
 
 //기준일 다시 계산해서 나타낼것

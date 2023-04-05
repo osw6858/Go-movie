@@ -2,10 +2,11 @@
   display: grid;
   column-gap: 16px;
   row-gap: 40px;
-
+  white-space: nowrap;
+  text-overflow: ellipsis;
   padding-top: 100px;
-  padding-left: 200px;
-  padding-right: 200px;
+  padding-right: 150px;
+  padding-left: 150px;
 }
 
 @media (max-width: 750px) {
@@ -27,7 +28,9 @@
 }
 
 .loading {
-  margin-top: 10%;
+  padding-top: 100px;
+  padding-right: 150px;
+  padding-left: 150px;
 }
 
 .pagination {

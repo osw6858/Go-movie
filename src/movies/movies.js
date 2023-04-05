@@ -1,5 +1,5 @@
 import "./movies.css";
-import { Card, Result, Space, Spin } from "antd";
+import { Card, Result } from "antd";
 import React from "react";
 import axios from "axios";
 import Pagination from "../pagenation/pagenation";
@@ -9,7 +9,7 @@ function Movies(prop) {
   const limit = 8; //한 화면에서 보여질 카드 갯수
   const [page, setPage] = React.useState(1);
   const offset = (page - 1) * limit; //해당 페이지의 첫 게시물의 위치(index)
-  const url = `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=7e9a703145ec25f8dc300521b3384744&curPage=1&movieNm=${prop.searchString}`;
+  const url = `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=7e9a703145ec25f8dc300521b3384744&curPage=1&itemPerPage=50&movieNm=${prop.searchString}`;
 
   React.useEffect(
     function () {
@@ -18,7 +18,10 @@ function Movies(prop) {
         .then(function (result) {
           console.log("영화목록결과", result);
           const movies = result.data.movieListResult.movieList;
-          setMovies(movies);
+          const filterMv = movies.filter(
+            (param) => param.repGenreNm !== "성인물(에로)"
+          );
+          setMovies(filterMv);
         })
         .catch(function (err) {
           console.log("에러발생", err);
@@ -30,7 +33,7 @@ function Movies(prop) {
   if (movies.length === 0) {
     return (
       <div className="loading">
-        <Result title="결과가 없습니다."></Result>
+        <Result title="로딩중...."></Result>
       </div>
     );
   }
@@ -42,7 +45,11 @@ function Movies(prop) {
           //slice로 index 0번방부터 8번방까지 자르고나서 map을 돌림
           return (
             <div key={index}>
-              <Card title={`${movies.movieNm}`} type="inner">
+              <Card
+                title={`${movies.movieNm}`}
+                type="inner"
+                className="info-card"
+              >
                 <p>장르 : {movies.genreAlt}</p>
                 <p>국가 : {movies.repNationNm}</p>
                 <p>제작년도 : {movies.prdtYear}년</p>
