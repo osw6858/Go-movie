@@ -4,3 +4,9 @@
   padding-right: 200px;
   padding-bottom: 100px;
 }
+
+.box-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

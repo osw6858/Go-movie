@@ -3,6 +3,7 @@ import React from "react";
 import Movies from "./movies/movies";
 import Boxoffice from "./boxoffice/boxoffice";
 import { Routes, Route, useNavigate } from "react-router-dom";
+import { debounce } from "lodash";
 
 import { BarsOutlined, SearchOutlined, LoginOutlined } from "@ant-design/icons";
 import { Button } from "antd";
@@ -10,11 +11,11 @@ import { Button } from "antd";
 function App() {
   const navigate = useNavigate(); //v6부터는 useHistory 말고 useNavigate을 사용
   const [searchValue, setSearchValue] = React.useState("");
-  const searching = (event) => {
-    //이부분 다시 공부(useState에 대해 더 깊이 공부해 볼것)
-    setSearchValue(event.target.value);
-    //console.log(event.target.value);
-  };
+
+  const onChange = debounce((e) => {
+    setSearchValue(e.target.value);
+  }, 300);
+
   return (
     <div>
       <header className="header">
@@ -26,7 +27,7 @@ function App() {
                 navigate("/");
               }}
             />
-            <div class="tooltip">페이지 정보</div>
+            <div className="tooltip">페이지 정보</div>
           </div>
           <div>
             <button
@@ -44,24 +45,14 @@ function App() {
             className="search-bar"
             type="text"
             placeholder="Search movies"
-            value={searchValue}
-            onChange={searching}
-          ></input>
+            onChange={(e) => onChange(e)}
+          />
           <button className="search-button">
             <SearchOutlined />
           </button>
         </div>
         <div className="right-section">
           <div className="select-container">
-            <Button
-              size="small"
-              onClick={() => {
-                navigate("/boxoffice");
-              }}
-            >
-              박스오피스 순위
-            </Button>
-
             <div className="login">
               <LoginOutlined
                 className="login-button"
@@ -77,11 +68,9 @@ function App() {
       <div className="body">
         <Routes>
           <Route path="/" element={<Movies searchString={searchValue} />} />
-          <Route
-            path="/boxoffice"
-            element={<Boxoffice searchString={searchValue}></Boxoffice>}
-          />
         </Routes>
+        <hr className="devid-line" />
+        <Boxoffice></Boxoffice>
       </div>
       <footer className="footer">
         <p>ver 1.0 / MadeBy osw6858</p>
@@ -103,3 +92,5 @@ export default App;
 //영화 상세페이지 rout로 구현하기
 
 //로그인 api도입 예정 -> 적용하면 로그인시만 상세페이지 조회 가능
+
+//디바운과 쓰로틀링을 이용해 api 호출을 줄여보자! => 성공

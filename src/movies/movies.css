@@ -4,9 +4,18 @@
   row-gap: 40px;
   white-space: nowrap;
   text-overflow: ellipsis;
-  padding-top: 100px;
+
   padding-right: 150px;
   padding-left: 150px;
+}
+
+.info-title {
+  display: flex;
+  flex-direction: column;
+  justify-items: center;
+  align-items: center;
+  padding-top: 88px;
+  padding-bottom: 38px;
 }
 
 @media (max-width: 750px) {

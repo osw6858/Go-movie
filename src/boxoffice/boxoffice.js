@@ -42,7 +42,12 @@ function Boxoffice() {
   return (
     <div>
       <section className="rank-section">
-        <h2>1위 ~ 10위 / 기준일 - {dayjs(date).format("YYYY년 MM월 DD일")}</h2>
+        <div className="box-title">
+          <h1>일일 박스오피스</h1>&nbsp;&nbsp;
+          <h2>
+            1위 ~ 10위 / 기준일 - {dayjs(date).format("YYYY년 MM월 DD일")}
+          </h2>
+        </div>
         {boxoffice.slice(offset, offset + limit).map((boxoffice, index) => {
           return (
             <div key={index}>

@@ -9,7 +9,9 @@ function Movies(prop) {
   const limit = 8; //한 화면에서 보여질 카드 갯수
   const [page, setPage] = React.useState(1);
   const offset = (page - 1) * limit; //해당 페이지의 첫 게시물의 위치(index)
-  const url = `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=7e9a703145ec25f8dc300521b3384744&curPage=1&itemPerPage=50&movieNm=${prop.searchString}`;
+  let searching = prop.searchString;
+  //console.log("검색어", searching);
+  const url = `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=7e9a703145ec25f8dc300521b3384744&curPage=1&itemPerPage=50&movieNm=${searching}`;
 
   React.useEffect(
     function () {
@@ -19,6 +21,7 @@ function Movies(prop) {
           console.log("영화목록결과", result);
           const movies = result.data.movieListResult.movieList;
           const filterMv = movies.filter(
+            //로그인 된 상태에서만 보여줄 예정
             (param) => param.repGenreNm !== "성인물(에로)"
           );
           setMovies(filterMv);
@@ -40,6 +43,9 @@ function Movies(prop) {
 
   return (
     <div>
+      <div className="info-title">
+        <h1>최신영화 목록</h1>
+      </div>
       <section className="info-grid">
         {movies.slice(offset, offset + limit).map((movies, index) => {
           //slice로 index 0번방부터 8번방까지 자르고나서 map을 돌림
