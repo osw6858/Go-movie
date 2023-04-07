@@ -3,6 +3,7 @@ import axios from "axios";
 import "./boxoffice.css";
 import { Card } from "antd";
 import dayjs from "dayjs";
+import { MOVIE_KEY } from "../key";
 
 function Boxoffice() {
   const [boxoffice, setBoxoffice] = React.useState([]);
@@ -24,7 +25,7 @@ function Boxoffice() {
   date = getFormatDate(date);
   //console.log("date", date);
 
-  const url = `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=7e9a703145ec25f8dc300521b3384744&targetDt=${date}`;
+  const url = `http://www.kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=${MOVIE_KEY}&targetDt=${date}`;
 
   React.useEffect(() => {
     axios

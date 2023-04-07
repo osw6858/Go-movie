@@ -3,6 +3,7 @@ import { Card, Result } from "antd";
 import React from "react";
 import axios from "axios";
 import Pagination from "../pagenation/pagenation";
+import { MOVIE_KEY } from "../key";
 
 function Movies(prop) {
   const [movies, setMovies] = React.useState([]);
@@ -11,7 +12,7 @@ function Movies(prop) {
   const offset = (page - 1) * limit; //해당 페이지의 첫 게시물의 위치(index)
   let searching = prop.searchString;
   //console.log("검색어", searching);
-  const url = `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=7e9a703145ec25f8dc300521b3384744&curPage=1&itemPerPage=50&movieNm=${searching}`;
+  const url = `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=${MOVIE_KEY}&curPage=1&itemPerPage=50&movieNm=${searching}`;
 
   React.useEffect(
     function () {

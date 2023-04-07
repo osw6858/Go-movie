@@ -4,9 +4,8 @@ import Movies from "./movies/movies";
 import Boxoffice from "./boxoffice/boxoffice";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { debounce } from "lodash";
-
 import { BarsOutlined, SearchOutlined, LoginOutlined } from "@ant-design/icons";
-import { Button } from "antd";
+import Login from "./login/login";
 
 function App() {
   const navigate = useNavigate(); //v6부터는 useHistory 말고 useNavigate을 사용
@@ -23,7 +22,6 @@ function App() {
           <div className="hamburger-menu">
             <BarsOutlined
               onClick={() => {
-                //로그인 페이지 열기 기능 구현
                 navigate("/");
               }}
             />
@@ -54,13 +52,13 @@ function App() {
         <div className="right-section">
           <div className="select-container">
             <div className="login">
-              <LoginOutlined
-                className="login-button"
+              <button
                 onClick={() => {
-                  navigate("/"); //카카오 로그인 기능 구현 예정
+                  navigate("/login");
                 }}
-              />
-              <div className="tooltip">로그인</div>
+              >
+                로그인
+              </button>
             </div>
           </div>
         </div>
@@ -68,6 +66,7 @@ function App() {
       <div className="body">
         <Routes>
           <Route path="/" element={<Movies searchString={searchValue} />} />
+          <Route path="/login" element={<Login></Login>} />
         </Routes>
         <hr className="devid-line" />
         <Boxoffice></Boxoffice>
