@@ -42,6 +42,16 @@ function Movies(prop) {
     );
   }
 
+  /*
+  if (movies.totCnt === 0) {
+    return (
+      <div className="loading">
+        <Result title="결과가 없습니다...."></Result>
+      </div>
+    );
+  }
+  */
+
   return (
     <div>
       <div className="info-title">
@@ -92,4 +102,4 @@ export default Movies;
 
 //상세페이지 만들기 / css 더 공부할것
 
-//결과없음을 계속 보여주지 말고 로딩화면이였다가 특정시간이 지나면 결과없음으로 버꿀것
+//로딩화면과 결과없음 화면 구분할것

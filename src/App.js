@@ -13,7 +13,7 @@ function App() {
 
   const onChange = debounce((e) => {
     setSearchValue(e.target.value);
-  }, 300);
+  }, 400);
 
   return (
     <div>

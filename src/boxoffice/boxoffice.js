@@ -52,8 +52,12 @@ function Boxoffice() {
         {boxoffice.slice(offset, offset + limit).map((boxoffice, index) => {
           return (
             <div key={index}>
-              <Card title={`${boxoffice.rank}등`} type="inner">
-                <Card type="inner" title={`${boxoffice.movieNm}`}>
+              <Card title={`<${boxoffice.rank}등>`} type="inner" align="center">
+                <Card
+                  type="inner"
+                  title={`${boxoffice.movieNm}`}
+                  align="center"
+                >
                   <p> 개봉일 : {boxoffice.openDt}</p>
                   <p>금일 관객수 : {boxoffice.audiCnt}명</p>
                   <p>누적 관객수 : {boxoffice.audiAcc}명</p>
