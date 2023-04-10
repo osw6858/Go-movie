@@ -6,10 +6,12 @@ import { Routes, Route, useNavigate } from "react-router-dom";
 import { debounce } from "lodash";
 import { BarsOutlined, SearchOutlined, LoginOutlined } from "@ant-design/icons";
 import Login from "./login/login";
+import KakaoLogin from "./login/kakaoLogin";
 
 function App() {
   const navigate = useNavigate(); //v6부터는 useHistory 말고 useNavigate을 사용
   const [searchValue, setSearchValue] = React.useState("");
+  let ACCESS_TOKEN = localStorage.getItem("token");
 
   const onChange = debounce((e) => {
     setSearchValue(e.target.value);
@@ -52,13 +54,17 @@ function App() {
         <div className="right-section">
           <div className="select-container">
             <div className="login">
-              <button
-                onClick={() => {
-                  navigate("/login");
-                }}
-              >
-                로그인
-              </button>
+              {ACCESS_TOKEN !== null ? (
+                <button>로그아웃</button>
+              ) : (
+                <button
+                  onClick={() => {
+                    navigate("/login");
+                  }}
+                >
+                  로그인
+                </button>
+              )}
             </div>
           </div>
         </div>
@@ -66,7 +72,8 @@ function App() {
       <div className="body">
         <Routes>
           <Route path="/" element={<Movies searchString={searchValue} />} />
-          <Route path="/login" element={<Login></Login>} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/login/kakaoLogin" element={<KakaoLogin></KakaoLogin>} />
         </Routes>
         <hr className="devid-line" />
         <Boxoffice></Boxoffice>

@@ -11,6 +11,7 @@ function Movies(prop) {
   const [page, setPage] = React.useState(1);
   const offset = (page - 1) * limit; //해당 페이지의 첫 게시물의 위치(index)
   let searching = prop.searchString;
+
   //console.log("검색어", searching);
   const url = `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=${MOVIE_KEY}&curPage=1&itemPerPage=50&movieNm=${searching}`;
 
