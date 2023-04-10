@@ -28,7 +28,7 @@ function KakaoLogin() {
       )
       .then((res) => {
         console.log("res", res);
-        const ACCESS_TOKEN = res.data.accessToken;
+        const ACCESS_TOKEN = res.data.access_token;
         localStorage.setItem("token", ACCESS_TOKEN);
         window.alert("로그인성공!");
         navigate("/");

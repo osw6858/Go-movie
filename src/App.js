@@ -4,14 +4,17 @@ import Movies from "./movies/movies";
 import Boxoffice from "./boxoffice/boxoffice";
 import { Routes, Route, useNavigate } from "react-router-dom";
 import { debounce } from "lodash";
-import { BarsOutlined, SearchOutlined, LoginOutlined } from "@ant-design/icons";
+import { BarsOutlined, SearchOutlined } from "@ant-design/icons";
 import Login from "./login/login";
 import KakaoLogin from "./login/kakaoLogin";
+import LogOut from "./login/logout";
+import KakaoLogout from "./login/test";
 
 function App() {
   const navigate = useNavigate(); //v6부터는 useHistory 말고 useNavigate을 사용
   const [searchValue, setSearchValue] = React.useState("");
   let ACCESS_TOKEN = localStorage.getItem("token");
+  console.log("토큰",ACCESS_TOKEN );
 
   const onChange = debounce((e) => {
     setSearchValue(e.target.value);
@@ -55,7 +58,13 @@ function App() {
           <div className="select-container">
             <div className="login">
               {ACCESS_TOKEN !== null ? (
-                <button>로그아웃</button>
+                <button
+                  onClick={() => {
+                    navigate("/logout");
+                  }}
+                >
+                  로그아웃
+                </button>
               ) : (
                 <button
                   onClick={() => {
@@ -74,6 +83,8 @@ function App() {
           <Route path="/" element={<Movies searchString={searchValue} />} />
           <Route path="/login" element={<Login />} />
           <Route path="/login/kakaoLogin" element={<KakaoLogin></KakaoLogin>} />
+          <Route path="/logout" element={<LogOut></LogOut>} />
+          <Route path="/kakaologout" element={<KakaoLogout></KakaoLogout>} />
         </Routes>
         <hr className="devid-line" />
         <Boxoffice></Boxoffice>

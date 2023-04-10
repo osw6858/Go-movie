@@ -11,7 +11,7 @@ function Movies(prop) {
   const [page, setPage] = React.useState(1);
   const offset = (page - 1) * limit; //해당 페이지의 첫 게시물의 위치(index)
   let searching = prop.searchString;
-
+  let ACCESS_TOKEN = localStorage.getItem("token");
   //console.log("검색어", searching);
   const url = `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=${MOVIE_KEY}&curPage=1&itemPerPage=50&movieNm=${searching}`;
 
@@ -22,11 +22,15 @@ function Movies(prop) {
         .then(function (result) {
           console.log("영화목록결과", result);
           const movies = result.data.movieListResult.movieList;
-          const filterMv = movies.filter(
-            //로그인 된 상태에서만 보여줄 예정
-            (param) => param.repGenreNm !== "성인물(에로)"
-          );
-          setMovies(filterMv);
+          if(ACCESS_TOKEN !== null) {
+            setMovies(movies);
+          }
+          if(ACCESS_TOKEN === null){
+            const filterMv = movies.filter(
+              (param) => param.repGenreNm !== "성인물(에로)"
+            );
+            setMovies(filterMv);
+          }
         })
         .catch(function (err) {
           console.log("에러발생", err);
