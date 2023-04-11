@@ -2,13 +2,14 @@ import "./App.css";
 import React from "react";
 import Movies from "./movies/movies";
 import Boxoffice from "./boxoffice/boxoffice";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, Link } from "react-router-dom";
 import { debounce } from "lodash";
 import { BarsOutlined, SearchOutlined } from "@ant-design/icons";
 import Login from "./login/login";
 import KakaoLogin from "./login/kakaoLogin";
 import LogOut from "./login/logout";
 import KakaoLogout from "./login/test";
+import { Carousel } from 'antd';
 
 function App() {
   const navigate = useNavigate(); //v6부터는 useHistory 말고 useNavigate을 사용
@@ -20,6 +21,14 @@ function App() {
     setSearchValue(e.target.value);
   }, 400);
 
+  const contentStyle = {
+  height: '160px',
+  color: '#fff',
+  lineHeight: '160px',
+  textAlign: 'center',
+  background: '#4d4d4d',
+};
+
   return (
     <div>
       <header className="header">
@@ -30,29 +39,26 @@ function App() {
                 navigate("/");
               }}
             />
-            <div className="tooltip">페이지 정보</div>
           </div>
           <div>
-            <button
+            <Link to="/" 
+             style={{ textDecoration: "none", color: "black" }}>
+            <span
               className="logo"
-              onClick={() => {
-                navigate("/");
-              }}
             >
-              <span>go-movie</span>
-            </button>
+              go-movie
+            </span>
+            </Link>
           </div>
         </div>
         <div className="middle-section">
+        <img className="search-button" src="assets/icons/search.svg" alt="search" />
           <input
             className="search-bar"
             type="text"
-            placeholder="Search movies"
+            placeholder="원하는 영화제목을 검색하세요."
             onChange={(e) => onChange(e)}
           />
-          <button className="search-button">
-            <SearchOutlined />
-          </button>
         </div>
         <div className="right-section">
           <div className="select-container">
@@ -62,6 +68,7 @@ function App() {
                   onClick={() => {
                     navigate("/logout");
                   }}
+                  className="login-out-button"
                 >
                   로그아웃
                 </button>
@@ -70,6 +77,7 @@ function App() {
                   onClick={() => {
                     navigate("/login");
                   }}
+                  className="login-out-button"
                 >
                   로그인
                 </button>
@@ -86,7 +94,23 @@ function App() {
           <Route path="/logout" element={<LogOut></LogOut>} />
           <Route path="/kakaologout" element={<KakaoLogout></KakaoLogout>} />
         </Routes>
-        <hr className="devid-line" />
+        <div className="banner">
+      <Carousel autoplay>
+    <div>
+      <h3 style={contentStyle}>1</h3>
+    </div>
+    <div>
+      <h3 style={contentStyle}>2</h3>
+    </div>
+    <div>
+      <h3 style={contentStyle}>3</h3>
+    </div>
+    <div>
+      <h3 style={contentStyle}>4</h3>
+    </div>
+  </Carousel>
+      </div>
+       
         <Boxoffice></Boxoffice>
       </div>
       <footer className="footer">

@@ -9,21 +9,19 @@
 @import url("https://fonts.googleapis.com/css2?family=Alkatra&family=Nanum+Gothic+Coding:wght@400;700&family=Noto+Sans+KR:wght@100&display=swap");
 
 .logo {
-  border-color: #ffffff;
-  border-radius: 10px;
   font-family: "Alkatra", cursive;
-  font-size: 18px;
+  font-size: 22px;
   padding-left: 15px;
 }
 
 .header {
-  height: 55px;
+  height: 70px;
 
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 
-  position: fixed;
+ 
   top: 0;
   left: 0;
   right: 0;
@@ -68,22 +66,13 @@
   align-items: center;
 }
 
-.search-button {
-  height: 40px;
-  width: 66px;
-  background-color: #ffffff;
-  border: 1px solid #4d4d4d;
-  margin-left: -1px;
-  margin-right: 10px;
-}
-
 .search-bar {
   height: 36.5px;
   padding-left: 10px;
   font-size: 16px;
 
   border: 1px solid #4d4d4d;
-  border-radius: 2px;
+  border-radius: 30px;
   background-color: #ffffff;
   flex: 1;
 }
@@ -92,28 +81,14 @@
   font-size: 16px;
 }
 
+.search-button {
+  padding-right: 20px;
+}
+
 .select-container {
   display: flex;
   justify-content: center;
   align-items: center;
-}
-.login .tooltip,
-.hamburger-menu .tooltip {
-  position: absolute;
-  background-color: gray;
-  color: white;
-  padding: 4px 8px 4px 8px;
-  bottom: -10px;
-  border-radius: 2px;
-  font-size: 12px;
-  opacity: 0;
-  transition: opacity 0.15s;
-  white-space: nowrap;
-}
-
-.login:hover .tooltip,
-.hamburger-menu:hover .tooltip {
-  opacity: 1;
 }
 
 .right-section {
@@ -124,8 +99,11 @@
   align-items: center;
 }
 
-.login-button {
-  padding-left: 30px;
+.login-out-button {
+  height: 35px;
+  width: 90px;
+  border-radius: 20px;
+  border-color: lightgray;
 }
 
 .devid-line {

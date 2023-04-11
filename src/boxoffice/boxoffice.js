@@ -44,19 +44,20 @@ function Boxoffice() {
     <div>
       <section className="rank-section">
         <div className="box-title">
-          <h1>일일 박스오피스</h1>&nbsp;&nbsp;
-          <h2>
+          <h1>일일 박스오피스</h1>
+          <h3>
             1위 ~ 10위 / 기준일 - {dayjs(date).format("YYYY년 MM월 DD일")}
-          </h2>
+          </h3>
         </div>
         {boxoffice.slice(offset, offset + limit).map((boxoffice, index) => {
           return (
             <div key={index}>
-              <Card title={`<${boxoffice.rank}등>`} type="inner" align="center">
+              <Card title={`<${boxoffice.rank}등>`} type="inner" align="center" className="boxoffice-card">
                 <Card
                   type="inner"
                   title={`${boxoffice.movieNm}`}
                   align="center"
+                  className="boxoffice-card"
                 >
                   <p> 개봉일 : {boxoffice.openDt}</p>
                   <p>금일 관객수 : {boxoffice.audiCnt}명</p>

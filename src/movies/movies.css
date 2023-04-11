@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Nanum+Gothic+Coding:wght@400;700&family=Noto+Sans+KR:wght@100&display=swap');
+
 .info-grid {
   display: grid;
   column-gap: 16px;
@@ -10,11 +12,12 @@
 }
 
 .info-title {
+  font-family: 'Nanum Gothic Coding', monospace;
   display: flex;
   flex-direction: column;
   justify-items: center;
   align-items: center;
-  padding-top: 88px;
+  padding-top: 30px;
   padding-bottom: 38px;
 }
 
@@ -48,4 +51,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.info-card {
+  background-color: rgb(252, 252, 252);
+  border-color: lightgray;
 }

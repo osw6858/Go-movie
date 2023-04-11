@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Nanum+Gothic+Coding:wght@400;700&family=Noto+Sans+KR:wght@100&display=swap');
 .rank-section {
   padding-top: 100px;
   padding-left: 450px;
@@ -6,7 +7,15 @@
 }
 
 .box-title {
+  font-family: 'Nanum Gothic Coding', monospace;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  align-items: center;
+}
+
+.boxoffice-card {
+  margin-top: 15px;
+  background-color: rgb(252, 252, 252);
+  border-color: lightgray;
 }
