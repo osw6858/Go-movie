@@ -1,9 +1,33 @@
 @import url('https://fonts.googleapis.com/css2?family=Alkatra&family=Nanum+Gothic+Coding:wght@400;700&family=Noto+Sans+KR:wght@100&display=swap');
-.rank-section {
-  padding-top: 100px;
-  padding-left: 450px;
-  padding-right: 450px;
-  padding-bottom: 100px;
+.rank-grid {
+  display: grid;
+  column-gap: 16px;
+  row-gap: 40px;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  padding-right: 150px;
+  padding-left: 150px;
+  
+}
+
+
+@media (max-width: 750px) {
+  .rank-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (min-width: 751px) and (max-width: 999px) {
+  .rank-grid {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (min-width: 1000px) {
+  .rank-grid {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+  }
 }
 
 .box-title {
@@ -12,6 +36,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 30px;
 }
 
 .boxoffice-card {

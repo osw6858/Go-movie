@@ -4,6 +4,7 @@ import React from "react";
 import axios from "axios";
 import Pagination from "../pagenation/pagenation";
 import { MOVIE_KEY } from "../key";
+import dayjs from "dayjs";
 
 function Movies(prop) {
   const [movies, setMovies] = React.useState([]);
@@ -14,6 +15,7 @@ function Movies(prop) {
   let ACCESS_TOKEN = localStorage.getItem("token");
   //console.log("검색어", searching);
   const url = `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=${MOVIE_KEY}&curPage=1&itemPerPage=50&movieNm=${searching}`;
+  let date = new Date();
 
   React.useEffect(
     function () {
@@ -60,7 +62,7 @@ function Movies(prop) {
   return (
     <div>
       <div className="info-title">
-        <h1>최신영화 목록</h1>
+        <h1>영화정보</h1><h3>목록 기준일 - {dayjs(date).format("YYYY년 MM월 DD일")}</h3>
       </div>
       <section className="info-grid">
         {movies.slice(offset, offset + limit).map((movies, index) => {

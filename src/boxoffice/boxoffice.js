@@ -4,10 +4,12 @@ import "./boxoffice.css";
 import { Card } from "antd";
 import dayjs from "dayjs";
 import { MOVIE_KEY } from "../key";
+import Pagination from "../pagenation/pagenation";
 
-function Boxoffice() {
+
+function Boxoffice(prop) {
   const [boxoffice, setBoxoffice] = React.useState([]);
-  const limit = 10; //랭킹은 10등까지 보여줄 예정
+  const limit = 8; //랭킹은 10등까지 보여줄 예정
   const [page, setPage] = React.useState(1);
   const offset = (page - 1) * limit;
 
@@ -42,13 +44,13 @@ function Boxoffice() {
 
   return (
     <div>
-      <section className="rank-section">
         <div className="box-title">
           <h1>일일 박스오피스</h1>
           <h3>
             1위 ~ 10위 / 기준일 - {dayjs(date).format("YYYY년 MM월 DD일")}
           </h3>
         </div>
+      <section className="rank-grid">
         {boxoffice.slice(offset, offset + limit).map((boxoffice, index) => {
           return (
             <div key={index}>
@@ -68,6 +70,14 @@ function Boxoffice() {
           );
         })}
       </section>
+      <div className="pagination">
+        <Pagination
+          total={boxoffice.length} //pagenation컴포넌트로 prop 전달
+          limit={limit}
+          page={page}
+          setPage={setPage}
+        />
+      </div>
     </div>
   );
 }

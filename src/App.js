@@ -9,7 +9,7 @@ import Login from "./login/login";
 import KakaoLogin from "./login/kakaoLogin";
 import LogOut from "./login/logout";
 import KakaoLogout from "./login/test";
-import { Carousel } from 'antd';
+import { Carousel, Descriptions } from 'antd';
 
 function App() {
   const navigate = useNavigate(); //v6부터는 useHistory 말고 useNavigate을 사용
@@ -20,14 +20,6 @@ function App() {
   const onChange = debounce((e) => {
     setSearchValue(e.target.value);
   }, 400);
-
-  const contentStyle = {
-  height: '160px',
-  color: '#fff',
-  lineHeight: '160px',
-  textAlign: 'center',
-  background: '#4d4d4d',
-};
 
   return (
     <div>
@@ -87,6 +79,7 @@ function App() {
         </div>
       </header>
       <div className="body">
+      <Carousel className="carousel" dotPosition="top" >
         <Routes>
           <Route path="/" element={<Movies searchString={searchValue} />} />
           <Route path="/login" element={<Login />} />
@@ -94,28 +87,20 @@ function App() {
           <Route path="/logout" element={<LogOut></LogOut>} />
           <Route path="/kakaologout" element={<KakaoLogout></KakaoLogout>} />
         </Routes>
-        <div className="banner">
-      <Carousel autoplay>
-    <div>
-      <h3 style={contentStyle}>1</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>2</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>3</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>4</h3>
-    </div>
-  </Carousel>
-      </div>
-       
         <Boxoffice></Boxoffice>
+        </Carousel>
       </div>
-      <footer className="footer">
-        <p>ver 1.0 / MadeBy osw6858</p>
-      </footer>
+      <footer >
+      <Descriptions title="User Info" className="footer" >
+    <Descriptions.Item label="Made By">OH SHIN WOONG</Descriptions.Item>
+    <Descriptions.Item label="Telephone">010-3788-6858</Descriptions.Item>
+    <Descriptions.Item label="Live">Seoul</Descriptions.Item>
+    <Descriptions.Item label="Version">1.0.0</Descriptions.Item>
+    <Descriptions.Item label="Address">
+     노원구
+    </Descriptions.Item>
+  </Descriptions>
+  </footer>
     </div>
   );
 }
