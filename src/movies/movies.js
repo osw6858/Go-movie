@@ -12,11 +12,18 @@ function Movies(prop) {
   const [page, setPage] = React.useState(1);
   const offset = (page - 1) * limit; //해당 페이지의 첫 게시물의 위치(index)
   let searching = prop.searchString;
+  let select = prop.selected;
+  let isSelect;
+  if(select === "movieNm") {
+    isSelect = "movieNm";
+  }else {
+    isSelect = "directorNm";
+  }
   let ACCESS_TOKEN = localStorage.getItem("token");
   //console.log("검색어", searching);
-  const url = `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=${MOVIE_KEY}&curPage=1&itemPerPage=50&movieNm=${searching}`;
+  const url = `http://kobis.or.kr/kobisopenapi/webservice/rest/movie/searchMovieList.json?key=${MOVIE_KEY}&curPage=1&itemPerPage=50&${isSelect}=${searching}`;
   let date = new Date();
-
+  
   React.useEffect(
     function () {
       axios
@@ -24,6 +31,7 @@ function Movies(prop) {
         .then(function (result) {
           console.log("영화목록결과", result);
           const movies = result.data.movieListResult.movieList;
+        
           if(ACCESS_TOKEN !== null) {
             setMovies(movies);
           }
@@ -38,7 +46,7 @@ function Movies(prop) {
           console.log("에러발생", err);
         });
     },
-    [prop.searchString] //검색최적화 생각해볼것 한글자 칠때마다 api통신하고 있음
+    [prop.searchString] 
   );
 
   if (movies.length === 0) {
@@ -48,6 +56,8 @@ function Movies(prop) {
       </div>
     );
   }
+
+  
 
   /*
   if (movies.totCnt === 0) {
@@ -78,6 +88,7 @@ function Movies(prop) {
                 <p>국가 : {movies.repNationNm}</p>
                 <p>제작년도 : {movies.prdtYear}년</p>
                 <p>상영상태 : {movies.prdtStatNm}</p>
+                <p>감독 : {movies.directors.map((name) => {return name.peopleNm})}</p>
               </Card>
             </div>
           );

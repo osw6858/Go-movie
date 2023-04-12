@@ -55,6 +55,8 @@
 }
 
 .info-card {
+  text-align: center;
   background-color: rgb(252, 252, 252);
   border-color: lightgray;
+  height: 280px;
 }

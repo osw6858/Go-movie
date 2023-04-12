@@ -54,7 +54,7 @@ function Boxoffice(prop) {
         {boxoffice.slice(offset, offset + limit).map((boxoffice, index) => {
           return (
             <div key={index}>
-              <Card title={`<${boxoffice.rank}등>`} type="inner" align="center" className="boxoffice-card">
+              <Card title={`<${boxoffice.rank}위>`} type="inner" align="center" className="boxoffice-card">
                 <Card
                   type="inner"
                   title={`${boxoffice.movieNm}`}
