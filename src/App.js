@@ -4,7 +4,7 @@ import Movies from "./movies/movies";
 import Boxoffice from "./boxoffice/boxoffice";
 import {Routes, Route, useNavigate, Link} from "react-router-dom";
 import {debounce} from "lodash";
-import {BarsOutlined, SearchOutlined} from "@ant-design/icons";
+import {BarsOutlined} from "@ant-design/icons";
 import Login from "./login/login";
 import KakaoLogin from "./login/kakaoLogin";
 import LogOut from "./login/logout";
@@ -59,9 +59,37 @@ function App() {
                             open={open}
                             extra={<Space > <Button onClick={onClose}>닫기</Button>
                         </Space>}>
-                            <p>Some contents...</p>
-                            <p>Some contents...</p>
-                            <p>Some contents...</p>
+                        <h2>페이지 소개</h2>
+                           <ul>
+                           <li>영화진흥회 api를 이용한 간단한 영화정보 검색 페이지</li>
+                            <br/>
+                            <li>카카오 로그인api이용 로그인 상태일때만 성인물 표시</li>
+                            <br/>
+                            <li>React를 이용하여 SPA방식으로 구현</li>
+                            <br/>
+                            <li>디바운싱 적용하여 검색시 과도한 api호출 방지</li>
+                            <br/>
+                            <li>antd이용 레이아웃 구성</li>
+                            <br/>
+                            <li><a href="https://osw6858.github.io/Go-movie/">각 부분 문제 해결 과정</a></li>
+                          </ul>
+                          <br/>
+                            <h2>제작과정</h2>
+                          <ul>
+                            <li>총 재작 기간 14일</li>
+                            <br/>
+                            <li>3/30 - 레이아웃 구상</li>
+                            <br/>
+                            <li>3/31 ~ 4/1 - 영화진흥회api 연결, 결과 목록 페이징</li>
+                            <br/>
+                            <li>4/2 ~ 4/7 - 검색기능 구현</li>
+                            <br/>
+                            <li>4/8 ~ 4/10 - 카카오 로그인 api 연결</li>
+                            <br/>
+                            <li>4/11 ~ 4/14 - 검색카테고리 추가 및 버그 수정</li>
+                          </ul>
+                          <br/>
+                           
                         </Drawer>
                     </div>
                     <div>
