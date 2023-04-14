@@ -106,7 +106,7 @@ function App() {
                     </div>
                 </div>
                 <div className="middle-section">
-                    <img className="search-button" src="assets/icons/search.svg" alt="search"/>
+                   
                     <input
                         className="search-bar"
                         type="text"
@@ -160,7 +160,7 @@ function App() {
 
                 <Routes>
                     <Route
-                        path="/"
+                        path="/Go-movie"
                         element={<Movies searchString = {
                             searchValue
                         }
