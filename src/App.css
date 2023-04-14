@@ -110,11 +110,22 @@
 }
 
 .carousel{
-  background-color: rgb(238, 238, 238)
+  text-align: center;
+  font-size: 18px;
+
 }
 
 .selector{
   padding-left: 10px;
   width: 120px;
+}
+
+.introduce{
+  text-align: center;
+}
+
+.boxoffice-collapse{
+  text-align: center;
+  font-size: 18px;
 }
 

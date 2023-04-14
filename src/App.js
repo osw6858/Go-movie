@@ -9,22 +9,40 @@ import Login from "./login/login";
 import KakaoLogin from "./login/kakaoLogin";
 import LogOut from "./login/logout";
 import KakaoLogout from "./login/test";
-import {Carousel, Descriptions, Select} from 'antd';
+import {
+    Drawer,
+    Descriptions,
+    Select,
+    Collapse,
+    Space,
+    Button
+} from 'antd';
 
 function App() {
     const navigate = useNavigate(); //v6부터는 useHistory 말고 useNavigate을 사용
     const [searchValue, setSearchValue] = React.useState("");
     const [selected, setSelected] = React.useState("");
+    const [open, setOpen] = React.useState(false);
+    const [placement, setPlacement] = React.useState('left');
+
     let ACCESS_TOKEN = localStorage.getItem("token");
-    console.log("토큰", ACCESS_TOKEN);
+
+    const {Panel} = Collapse;
+
+    const showDrawer = () => {
+        setOpen(true);
+    };
+    const onClose = () => {
+        setOpen(false);
+    };
 
     const onChange = debounce((e) => {
         setSearchValue(e.target.value);
     }, 300);
 
     const handleChange = (value) => {
-      console.log(`selected ${value}`);
-      setSelected(value);
+        console.log(`selected ${value}`);
+        setSelected(value);
     };
 
     return (
@@ -32,10 +50,19 @@ function App() {
             <header className="header">
                 <div className="left-section">
                     <div className="hamburger-menu">
-                        <BarsOutlined
-                            onClick={() => {
-                                navigate("/");
-                            }}/>
+                        <BarsOutlined onClick={showDrawer}/>
+                        <Drawer
+                            title="홈페이지 설계 과정 및 정보"
+                            placement={placement}
+                            width={500}
+                            onClose={onClose}
+                            open={open}
+                            extra={<Space > <Button onClick={onClose}>닫기</Button>
+                        </Space>}>
+                            <p>Some contents...</p>
+                            <p>Some contents...</p>
+                            <p>Some contents...</p>
+                        </Drawer>
                     </div>
                     <div>
                         <Link
@@ -58,10 +85,11 @@ function App() {
                         placeholder="여기에 검색해 주세요."
                         onChange={(e) => onChange(e)}/>
                     <Select
-                        defaultValue="제목"
+                        defaultValue="movieNm"
                         className="selector"
                         onChange={handleChange}
                         options={[
+
                             {
                                 value: 'movieNm',
                                 label: '제목'
@@ -101,29 +129,36 @@ function App() {
                 </div>
             </header>
             <div className="body">
-                <Carousel className="carousel" dotPosition="top">
-                    <Routes>
-                        <Route
-                            path="/"
-                            element={<Movies searchString = {
-                                searchValue
-                            } selected = {selected} />
-                            }
-                        />
-                        <Route path="/login" element={<Login />}/>
-                        <Route path="/login/kakaoLogin" element={<KakaoLogin></KakaoLogin>}/>
-                        <Route path="/logout" element={<LogOut></LogOut>}/>
-                        <Route path="/kakaologout" element={<KakaoLogout></KakaoLogout>}/>
-                    </Routes>
-                    <Boxoffice></Boxoffice>
-                </Carousel>
+
+                <Routes>
+                    <Route
+                        path="/"
+                        element={<Movies searchString = {
+                            searchValue
+                        }
+                        selected = {
+                            selected
+                        } />
+}/>
+                    <Route path="/login" element={<Login />}/>
+                    <Route path="/login/kakaoLogin" element={<KakaoLogin></KakaoLogin>}/>
+                    <Route path="/logout" element={<LogOut></LogOut>}/>
+                    <Route path="/kakaologout" element={<KakaoLogout></KakaoLogout>}/>
+                </Routes>
+
+                <Collapse size="large">
+                    <Panel header="일일 박스오피스 순위" key="1" className="boxoffice-collapse">
+                        <Boxoffice></Boxoffice>
+                    </Panel>
+                </Collapse>
+
             </div>
             <footer >
                 <Descriptions title="User Info" className="footer">
                     <Descriptions.Item label="Made By">OH SHIN WOONG</Descriptions.Item>
                     <Descriptions.Item label="Telephone">010-3788-6858</Descriptions.Item>
                     <Descriptions.Item label="Live">Seoul</Descriptions.Item>
-                    <Descriptions.Item label="Version">1.0.0</Descriptions.Item>
+                    <Descriptions.Item label="Version">1.0</Descriptions.Item>
                     <Descriptions.Item label="Address">
                         노원구
                     </Descriptions.Item>
