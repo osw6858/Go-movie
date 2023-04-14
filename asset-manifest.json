@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/Go-movie/static/css/main.f2c9298f.css",
-    "main.js": "/Go-movie/static/js/main.7ef2c7a1.js",
+    "main.js": "/Go-movie/static/js/main.759b4f32.js",
     "static/js/787.a3c108aa.chunk.js": "/Go-movie/static/js/787.a3c108aa.chunk.js",
     "index.html": "/Go-movie/index.html",
     "main.f2c9298f.css.map": "/Go-movie/static/css/main.f2c9298f.css.map",
-    "main.7ef2c7a1.js.map": "/Go-movie/static/js/main.7ef2c7a1.js.map",
+    "main.759b4f32.js.map": "/Go-movie/static/js/main.759b4f32.js.map",
     "787.a3c108aa.chunk.js.map": "/Go-movie/static/js/787.a3c108aa.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.f2c9298f.css",
-    "static/js/main.7ef2c7a1.js"
+    "static/js/main.759b4f32.js"
   ]
 }
