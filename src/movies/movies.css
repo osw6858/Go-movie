@@ -4,8 +4,7 @@
   display: grid;
   column-gap: 16px;
   row-gap: 40px;
-  white-space: nowrap;
-  text-overflow: ellipsis;
+
 
   padding-right: 150px;
   padding-left: 150px;
@@ -22,19 +21,30 @@
 
 }
 
-@media (max-width: 750px) {
+@media (max-width: 576px) {
+  .info-grid{
+    grid-template-columns: 1fr;
+   max-width: 400px;
+   padding: 0;
+   margin: 0;
+  }
+}
+
+@media (max-width: 750px) and (min-width: 577px) {
   .info-grid {
     grid-template-columns: 1fr 1fr;
+    padding: 0;
   }
 }
 
-@media (min-width: 751px) and (max-width: 999px) {
+@media (min-width: 751px) and (max-width: 1180px) {
   .info-grid {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    max-width: 1000px;
   }
 }
 
-@media (min-width: 1000px) {
+@media (min-width: 1181px) {
   .info-grid {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
@@ -55,8 +65,13 @@
 }
 
 .info-card {
+  max-width: 400px;
+  position: relative;
   text-align: center;
   background-color: rgb(252, 252, 252);
   border-color: lightgray;
   height: 280px;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+ 
 }
